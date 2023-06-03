@@ -6,15 +6,9 @@ public class Enemy_FishRam1 : Enemy
     private Transform target;
     private bool lockRotation = false;
 
-    [SerializeField]
-    private AudioClip warningSoundClip;
-
     private void Start()
     {
-        audioSource.clip = warningSoundClip;
-        audioSource.Play();
-        target = GameObject.Find("Player").GetComponent<Transform>();
-        if (target == null)
+        if (!GameObject.Find("Player").TryGetComponent<Transform>(out target))
         {
             Debug.Log("Error: Target(Player) is null!");
         }

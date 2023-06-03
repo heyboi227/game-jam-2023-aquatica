@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
 
     private enum EnemyTypes
     {
-        Default,
+        Fish,
     };
 
     [SerializeField]
