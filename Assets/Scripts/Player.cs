@@ -53,10 +53,6 @@ public class Player : MonoBehaviour
         MovementLogic();
     }
 
-    void OnDestroy()
-    {
-    }
-
     public void PlaySound(AudioSource audioSource, AudioClip audioClip)
     {
         audioSource.clip = audioClip;
