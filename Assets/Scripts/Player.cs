@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField]
 #pragma warning disable IDE0052 // Remove unread private members
     private bool canSpeedBoost = false;
+    [SerializeField]
+    private bool canTripleShoot = false;
 #pragma warning restore IDE0052 // Remove unread private members
     private bool isSpeedBoost = false;
 
@@ -110,6 +112,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void ActivateTripleShot()
+    {
+        audioSource.clip = powerupPickupSoundClip;
+        canTripleShoot = true;
+        audioSource.Play();
+        StartCoroutine(DeactivateTripleShot());
+    }
+
     public void ActivateSpeedBoost()
     {
         audioSource.clip = powerupPickupSoundClip;
@@ -121,6 +131,12 @@ public class Player : MonoBehaviour
         audioSource.Play();
         isSpeedBoost = true;
         StartCoroutine(DeactivateSpeedBoost());
+    }
+
+    private IEnumerator DeactivateTripleShot()
+    {
+        yield return new WaitForSeconds(PowerupConfig.timeLimit);
+        canTripleShoot = false;
     }
 
     private IEnumerator DeactivateSpeedBoost()
