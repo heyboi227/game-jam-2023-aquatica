@@ -21,8 +21,8 @@ public static class PlayerConfig
     // Playground limits
     public static float upperLimit = 4f;
     public static float lowerLimit = -4f;
-    public static float leftLimit = -11.3f;
-    public static float rightLimit = 11.3f;
+    public static float leftLimit = -8.25f;
+    public static float rightLimit = 7f;
 }
 
 public static class LaserConfig

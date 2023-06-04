@@ -81,21 +81,9 @@ public class Player : MonoBehaviour
         // Move the player to the given direction with 5.0 speed
         transform.Translate(speed * Time.deltaTime * direction);
 
-        // Limit player movement on vertical axis
+        // Limit player movement on axes
         // upper and lower limit
-        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, PlayerConfig.lowerLimit, PlayerConfig.upperLimit), transform.position.z);
-
-        // Limit player movement on horizontal axis
-
-        // left and right limit
-        if (transform.position.x <= PlayerConfig.leftLimit)
-        {
-            transform.position = new Vector3(PlayerConfig.rightLimit, transform.position.y, transform.position.z);
-        }
-        else if (transform.position.x >= PlayerConfig.rightLimit)
-        {
-            transform.position = new Vector3(PlayerConfig.leftLimit, transform.position.y, transform.position.z);
-        }
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, PlayerConfig.leftLimit, PlayerConfig.rightLimit), Mathf.Clamp(transform.position.y, PlayerConfig.lowerLimit, PlayerConfig.upperLimit), transform.position.z);
     }
 
     public void DamagePlayer()
