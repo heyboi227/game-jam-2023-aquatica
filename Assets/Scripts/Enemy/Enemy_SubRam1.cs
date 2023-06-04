@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy_FishRam1 : Enemy
+public class Enemy_SubRam1 : Enemy
 {
     [SerializeField]
     private Transform target;
@@ -37,14 +37,15 @@ public class Enemy_FishRam1 : Enemy
     {
         if (other.tag == "Player")
         {
-                player = other.transform.GetComponent<Player>();
-                if (player != null)
-                {
-                    player.DamagePlayer();
-                }
-                transform.GetChild(0).gameObject.SetActive(false);
-                lockRotation = true;
-                audioSource.clip = explosionSoundClip;
-                StartCoroutine(AnimationRoutine());
+            player = other.transform.GetComponent<Player>();
+            if (player != null)
+            {
+                player.DamagePlayer();
+            }
+            transform.GetChild(0).gameObject.SetActive(false);
+            lockRotation = true;
+            audioSource.clip = explosionSoundClip;
+            StartCoroutine(AnimationRoutine());
         }
+    }
 }
