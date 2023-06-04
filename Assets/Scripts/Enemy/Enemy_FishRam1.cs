@@ -35,21 +35,8 @@ public class Enemy_FishRam1 : Enemy
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        switch (other.tag)
+        if (other.tag == "Player")
         {
-            case "Laser":
-                DamageEnemy(other);
-                if (lives <= 0)
-                {
-                    uiManager.UpdateScore(points);
-                    transform.GetChild(0).gameObject.SetActive(false);
-                    lockRotation = true;
-                    audioSource.clip = explosionSoundClip;
-                    StartCoroutine(AnimationRoutine());
-                }
-                break;
-
-            case "Player":
                 player = other.transform.GetComponent<Player>();
                 if (player != null)
                 {
@@ -59,10 +46,5 @@ public class Enemy_FishRam1 : Enemy
                 lockRotation = true;
                 audioSource.clip = explosionSoundClip;
                 StartCoroutine(AnimationRoutine());
-                break;
-
-            default:
-                break;
         }
-    }
 }
