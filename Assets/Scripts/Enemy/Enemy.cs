@@ -20,7 +20,8 @@ public class Enemy : MonoBehaviour
 
     private enum EnemyTypes
     {
-        Fish,
+        Mine,
+        Submarine
     };
 
     [SerializeField]
@@ -67,12 +68,12 @@ public class Enemy : MonoBehaviour
 
     protected void MovementLogic()
     {
-        transform.Translate(enemySpeed * Time.deltaTime * Vector3.down);
+        transform.Translate(enemySpeed * Time.deltaTime * Vector3.left);
 
-        if (transform.position.y <= Config.lowerLimit)
+        if (transform.position.x <= Config.leftLimit)
         {
-            float randomX = Random.Range(Config.leftLimit, Config.rightLimit);
-            transform.position = new Vector3(randomX, Config.upperLimit, transform.position.z);
+            float randomY = Random.Range(PlayerConfig.upperLimit, PlayerConfig.lowerLimit);
+            transform.position = new Vector3(11f, randomY, transform.position.z);
         }
     }
 

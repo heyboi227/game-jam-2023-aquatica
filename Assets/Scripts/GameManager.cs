@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private bool isGameOver = false;
     [SerializeField]
     private GameObject panel;
+    private SpawnManager spawnManager;
 
     void Start()
     {
@@ -14,6 +15,10 @@ public class GameManager : MonoBehaviour
         {
             panel.SetActive(false);
         }
+        if (!GameObject.Find("SpawnManager").TryGetComponent(out spawnManager)) {
+            Debug.LogError("Error! Spawn manager is null!");
+        }
+        spawnManager.StartSpawn();
     }
 
     void Update()
