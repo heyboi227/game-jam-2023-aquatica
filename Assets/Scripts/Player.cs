@@ -6,6 +6,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float speed = PlayerConfig.speed;
     [SerializeField]
+    private GameObject missilePrefab;
+    [SerializeField]
+    private float fireRate = MissileConfig.fireRate;
+    private float canFire = -1f;
+    [SerializeField]
     private int lives = PlayerConfig.lives;
     private UIManager uIManager;
     private GameManager gameManager;
@@ -19,6 +24,9 @@ public class Player : MonoBehaviour
 
     private AudioSource audioSource;
 
+
+    [SerializeField]
+    private AudioClip missileSoundClip;
     [SerializeField]
     private AudioClip powerupPickupSoundClip;
     [SerializeField]
@@ -44,7 +52,9 @@ public class Player : MonoBehaviour
             Debug.LogError("AudioSource is null!");
         }
 
-            transform.position = new Vector3(PlayerConfig.startXPosition, PlayerConfig.startYPosition, PlayerConfig.startZPosition);
+        audioSource.clip = missileSoundClip;
+
+        transform.position = new Vector3(PlayerConfig.startXPosition, PlayerConfig.startYPosition, PlayerConfig.startZPosition);
 
         uIManager.UpdateLives(lives);
     }
@@ -53,6 +63,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         MovementLogic();
+        ShootingLogic();
     }
 
     public void PlaySound(AudioSource audioSource, AudioClip audioClip)
@@ -67,6 +78,14 @@ public class Player : MonoBehaviour
         audioSource.Stop();
         audioSource.loop = false;
         audioSource.clip = null;
+    }
+
+    void ShootingLogic()
+    {
+        if ((Input.GetKeyDown(KeyCode.Space) && Time.time > canFire) || (Input.GetKeyDown(KeyCode.RightShift) && Time.time > canFire))
+        {
+            FireMissile();
+        }
     }
 
     void MovementLogic()
@@ -133,6 +152,21 @@ public class Player : MonoBehaviour
         speed /= 2;
         isSpeedBoost = false;
         canSpeedBoost = false;
+    }
+
+    public void FireMissile()
+    {
+        canFire = Time.time + fireRate;
+        audioSource.clip = missileSoundClip;
+        Instantiate(missilePrefab, transform.position + MissileConfig.offsetSpawn, Quaternion.identity);
+        audioSource.Play();
+
+        //if (canTripleShoot)
+        //{
+        //    audioSource.clip = tripleShotSoundClip;
+        //    Instantiate(tripleShotPrefab, transform.position, Quaternion.identity);
+        //    audioSource.Play();
+        //}
     }
 
     public void IncreaseScore(int points)

@@ -2278,7 +2278,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab:
   - enemyPrefab: {fileID: 6492829446135911252, guid: 4c17f83b0cbeb2e49bd3e091477293ad, type: 3}
-    chance: 100
+    chance: 41.6
+    weight: 0
+  - enemyPrefab: {fileID: 6492829446135911252, guid: 639edc455076fe24280ee87da7d3ffb9, type: 3}
+    chance: 24.6
     weight: 0
   powerupPrefab: []
   enemyContainer: {fileID: 777200934}
@@ -2571,9 +2574,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+  missilePrefab: {fileID: 1471176200623892269, guid: c03ad44fb876759499309c2e03198142, type: 3}
+  fireRate: 1
   lives: 3
   canSpeedBoost: 0
   canTripleShoot: 0
+  missileSoundClip: {fileID: 8300000, guid: 764151a64b89179459decfa2611b82d4, type: 3}
   powerupPickupSoundClip: {fileID: 0}
   lifeDownSoundClip: {fileID: 0}
 --- !u!82 &2106419866

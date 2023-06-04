@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class Enemy_SubRam1 : Enemy
+public class Enemy_Mine : Enemy
 {
-
     void Update()
     {
         transform.Translate(new Vector3(-(enemySpeed * Time.deltaTime), 0, 0));
@@ -20,6 +19,17 @@ public class Enemy_SubRam1 : Enemy
             transform.GetChild(0).gameObject.SetActive(false);
             audioSource.clip = explosionSoundClip;
             StartCoroutine(AnimationRoutine());
+        }
+        else if (other.CompareTag("Missile"))
+        {
+            DamageEnemy(other);
+            if (lives <= 0)
+            {
+                uiManager.UpdateScore(points);
+                transform.GetChild(0).gameObject.SetActive(false);
+                audioSource.clip = explosionSoundClip;
+                StartCoroutine(AnimationRoutine());
+            }
         }
     }
 }

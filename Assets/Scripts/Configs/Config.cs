@@ -25,11 +25,11 @@ public static class PlayerConfig
     public static float rightLimit = 7f;
 }
 
-public static class LaserConfig
+public static class MissileConfig
 {
     public static float speed = 8f;
-    public static float fireRate = 0.2f;
-    public static Vector3 offsetSpawn = new(0f, 0.8f, 0f);
+    public static float fireRate = 1f;
+    public static Vector3 offsetSpawn = new(2f, -0.5f, 0f);
     public static float distanceLimit = 11f;
 }
 

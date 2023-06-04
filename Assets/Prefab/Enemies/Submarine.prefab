@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 6492829446135911277}
   - component: {fileID: -5080655921538809500}
   m_Layer: 0
-  m_Name: SubRam1
+  m_Name: Submarine
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
