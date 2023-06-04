@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject missilePrefab;
     [SerializeField]
+    private GameObject tripleShotPrefab;
+    [SerializeField]
     private float fireRate = MissileConfig.fireRate;
     private float canFire = -1f;
     [SerializeField]
@@ -158,15 +160,16 @@ public class Player : MonoBehaviour
     {
         canFire = Time.time + fireRate;
         audioSource.clip = missileSoundClip;
-        Instantiate(missilePrefab, transform.position + MissileConfig.offsetSpawn, Quaternion.identity);
-        audioSource.Play();
-
-        //if (canTripleShoot)
-        //{
-        //    audioSource.clip = tripleShotSoundClip;
-        //    Instantiate(tripleShotPrefab, transform.position, Quaternion.identity);
-        //    audioSource.Play();
-        //}
+        if (!canTripleShoot)
+        {
+            Instantiate(missilePrefab, transform.position + MissileConfig.offsetSpawn, Quaternion.identity);
+            audioSource.Play();
+        }
+        else
+        {
+            Instantiate(tripleShotPrefab, transform.position + MissileConfig.offsetSpawn, Quaternion.identity);
+            audioSource.Play();
+        }
     }
 
     public void IncreaseScore(int points)

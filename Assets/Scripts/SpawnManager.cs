@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviour
     public void StartSpawn()
     {
         StartCoroutine(SpawnEnemiesRoutine());
-        //StartCoroutine(SpawnPowerupsRoutine());
+        StartCoroutine(SpawnPowerupsRoutine());
     }
 
     private void CalculateWeights()
@@ -99,19 +99,19 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    //private IEnumerator SpawnPowerupsRoutine()
-    //{
-    //    while (spawnObjects)
-    //    {
-    //        SpawnablePowerup randomPowerup = powerupPrefab[GetRandomIndex()];
+    private IEnumerator SpawnPowerupsRoutine()
+    {
+        while (spawnObjects)
+        {
+            SpawnablePowerup randomPowerup = powerupPrefab[GetRandomIndex()];
 
-    //        Vector3 spawnPosition = new(Random.Range(Config.leftLimit, Config.rightLimit), Config.upperLimit, transform.position.z);
-    //        GameObject powerup = Instantiate(randomPowerup.powerupPrefab, spawnPosition, Quaternion.identity);
-    //        powerup.transform.SetParent(powerupContainer.transform);
+            Vector3 spawnPosition = new(11f, Random.Range(PlayerConfig.upperLimit, PlayerConfig.lowerLimit), transform.position.z);
+            GameObject powerup = Instantiate(randomPowerup.powerupPrefab, spawnPosition, Quaternion.identity);
+            powerup.transform.SetParent(powerupContainer.transform);
 
-    //        yield return new WaitForSeconds(Random.Range(PowerupConfig.spawnRangeMin, PowerupConfig.spawnRangeMax));
-    //    }
-    //}
+            yield return new WaitForSeconds(Random.Range(PowerupConfig.spawnRangeMin, PowerupConfig.spawnRangeMax));
+        }
+    }
 
     public void OnPlayerDeath()
     {

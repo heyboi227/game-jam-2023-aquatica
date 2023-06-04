@@ -2283,7 +2283,13 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 6492829446135911252, guid: 639edc455076fe24280ee87da7d3ffb9, type: 3}
     chance: 24.6
     weight: 0
-  powerupPrefab: []
+  powerupPrefab:
+  - powerupPrefab: {fileID: 3388324868795697554, guid: db5232f09b648d44ab11cce5983d4dad, type: 3}
+    chance: 46
+    weight: 0
+  - powerupPrefab: {fileID: 3388324868795697554, guid: d421ab52ca84ede4597c215ed3ceca4d, type: 3}
+    chance: 31.5
+    weight: 0
   enemyContainer: {fileID: 777200934}
   powerupContainer: {fileID: 1076296544}
 --- !u!1 &2105307175
@@ -2575,13 +2581,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   missilePrefab: {fileID: 1471176200623892269, guid: c03ad44fb876759499309c2e03198142, type: 3}
-  fireRate: 1
+  tripleShotPrefab: {fileID: 6877608512155673611, guid: ee27b273733c1674a83001a4788ea8d3, type: 3}
+  fireRate: 0.3
   lives: 3
   canSpeedBoost: 0
   canTripleShoot: 0
   missileSoundClip: {fileID: 8300000, guid: 764151a64b89179459decfa2611b82d4, type: 3}
-  powerupPickupSoundClip: {fileID: 0}
-  lifeDownSoundClip: {fileID: 0}
+  powerupPickupSoundClip: {fileID: 8300000, guid: cf5c154c08333e146b717dc8b194a423, type: 3}
+  lifeDownSoundClip: {fileID: 8300000, guid: 61e861874dbd8ff4493d1e4d51d55edc, type: 3}
 --- !u!82 &2106419866
 AudioSource:
   m_ObjectHideFlags: 0
